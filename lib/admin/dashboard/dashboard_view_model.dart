@@ -41,8 +41,8 @@ class DashboardViewModel with ChangeNotifier {
       if (s != null) {
         for (var i = 0; i < s.length; i++) {
           if (s[i].tanggal == DateFormat('yyyy-MM-dd').format(DateTime.now()) &&
-              s[i].catatan!.isEmpty &&
-              s[i].diagnosa!.isEmpty) {
+              s[i].catatan == null &&
+              s[i].diagnosa == null) {
             _schedule.add(s[i]);
           }
         }

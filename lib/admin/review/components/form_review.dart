@@ -31,11 +31,16 @@ class _FormReviewState extends State<FormReview> {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       var viewModel = Provider.of<ReviewViewModel>(context, listen: false);
       await viewModel.getReviewById(widget.id);
-      jadwalKunjunganController.text = viewModel.s.tanggal!;
-      idPasien.text = viewModel.s.idPasien.toString();
-      jenisPerawatan.text = viewModel.s.jenisPerawatan!;
-      namaPasien.text = viewModel.s.namaPasien!;
-      namaDokter.text = viewModel.s.namaDokter!;
+      jadwalKunjunganController.text =
+          viewModel.s.tanggal != null ? viewModel.s.tanggal! : "";
+      idPasien.text =
+          viewModel.s.idPasien != null ? viewModel.s.idPasien.toString() : "";
+      jenisPerawatan.text =
+          viewModel.s.jenisPerawatan != null ? viewModel.s.jenisPerawatan! : "";
+      namaPasien.text =
+          viewModel.s.namaPasien != null ? viewModel.s.namaPasien! : "";
+      namaDokter.text =
+          viewModel.s.namaDokter != null ? viewModel.s.namaDokter! : "";
       diagnosa.text = viewModel.s.diagnosa != null ? viewModel.s.diagnosa! : "";
       catatan.text = viewModel.s.catatan != null ? viewModel.s.catatan! : "";
     });

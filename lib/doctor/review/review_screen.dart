@@ -146,7 +146,8 @@ class _ReviewScreenState extends State<ReviewScreen> {
                                                   ),
                                                 ),
                                                 if (value.s.jenisPerawatan ==
-                                                    'Rawat Jalan')
+                                                        'Rawat Jalan' &&
+                                                    value.s.controll != null)
                                                   Container(
                                                     padding:
                                                         const EdgeInsets.all(

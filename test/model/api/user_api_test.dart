@@ -25,42 +25,27 @@ void main() {
 
   group('User API', () {
     test('login admin', () async {
-      when(userAPI.login(userAdmin)).thenAnswer((_) async =>
-          'eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIxNCIsInN1YiI6ImFhYWFhYWFhIn0.XGh-SQ97I1adGRcnRdoV_CYUuXW2ZdM_uqegtR0EsDg');
+      when(userAPI.login(userAdmin)).thenAnswer(
+        (_) async => 'xxxxxxxxxxxxxxx',
+      );
       String? token = await userAPI.login(userAdmin);
       expect(token!.isEmpty, false);
     });
 
     test('login dokter', () async {
-      when(userAPI.login(userDokter)).thenAnswer((_) async =>
-          'eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIxMyIsInN1YiI6ImFkbWluMTIzIn0.IyDgsDjLlR8REzrQepn3RMpZIcLmfh_mVARhN6ZTwDU');
+      when(userAPI.login(userDokter)).thenAnswer(
+        (_) async => 'xxxxxxxxxxxxxxx',
+      );
       String? token = await userAPI.login(userDokter);
       expect(token!.isEmpty, false);
     });
 
     test('get data dokter', () async {
       when(userAPI.getDoctor()).thenAnswer(
-        (_) async => Doctor(
-          id: 8,
-          namaLengkap: 'aaaa',
-          spesialis: 'aa',
-          npa: 1111111,
-          username: 'aaaaaaaa',
-          password: 'aaaaaaaa',
-        ),
+        (_) async => Doctor(),
       );
       var doctor = await userAPI.getDoctor();
-      expect(
-        doctor,
-        Doctor(
-          id: 8,
-          namaLengkap: 'aaaa',
-          spesialis: 'aa',
-          npa: 1111111,
-          username: 'aaaaaaaa',
-          password: 'aaaaaaaa',
-        ),
-      );
+      expect(doctor, Doctor());
     });
   });
 }

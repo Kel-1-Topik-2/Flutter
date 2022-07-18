@@ -13,7 +13,7 @@ class PatientAPI {
         'https://springboot-postgresql-capstone.herokuapp.com/pasien',
       );
       if (response.statusCode == 200) {
-        List<Patient> patients = (response.data as List)
+        List<Patient> patients = (response.data['data'] as List)
             .map(
               (e) => Patient.fromJson(e),
             )

@@ -18,14 +18,24 @@ class Doctor {
   });
 
   factory Doctor.fromJson(Map<String, dynamic> json) {
+    String username = '';
+    String password = '';
+    int idUser = 0;
+
+    if (json['user'] != null) {
+      username = json['user']['username'];
+      password = json['user']['password'];
+      idUser = json['user']['id'];
+    }
+
     return Doctor(
       id: json['id'],
-      idUsername: json['user']['id'],
+      idUsername: idUser,
       namaLengkap: json['namadokter'],
       spesialis: json['spesialis'],
       npa: json['srp'],
-      username: json['user']['username'],
-      password: json['user']['password'],
+      username: username,
+      password: password,
     );
   }
 
@@ -59,5 +69,9 @@ class Doctor {
   static Map<String, dynamic> toJsonUser(Doctor itemProject) => {
         'username': itemProject.username,
         'password': itemProject.password,
+      };
+  static Map<String, dynamic> toJsonUpdateUser(Doctor itemProject) => {
+        'new_username': itemProject.username,
+        'new_password': itemProject.password,
       };
 }

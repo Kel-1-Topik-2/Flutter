@@ -13,7 +13,7 @@ class DoctorAPI {
         'https://springboot-postgresql-capstone.herokuapp.com/dokter',
       );
       if (response.statusCode == 200) {
-        List<Doctor> doctors = (response.data as List)
+        List<Doctor> doctors = (response.data['data'] as List)
             .map(
               (e) => Doctor.fromJson(e),
             )
@@ -23,6 +23,7 @@ class DoctorAPI {
         return null;
       }
     } catch (e) {
+      print(e);
       return null;
     }
   }
@@ -77,11 +78,11 @@ class DoctorAPI {
 
   Future<bool> editDoctor(Doctor doctor) async {
     try {
-      var user = Doctor.toJsonUser(doctor);
+      var user = Doctor.toJsonUpdateUser(doctor);
       await token.tokenFunc();
       dio.options.headers['Authorization'] = 'Bearer: ${token.token}';
       final response1 = await dio.put(
-        'https://springboot-postgresql-capstone.herokuapp.com/user/${doctor.idUsername}',
+        'https://springboot-postgresql-capstone.herokuapp.com/api/auth/updateuser/${doctor.idUsername}',
         data: user,
       );
       if (response1.statusCode == 200) {
@@ -100,6 +101,7 @@ class DoctorAPI {
         return false;
       }
     } catch (e) {
+      print(e);
       return false;
     }
   }

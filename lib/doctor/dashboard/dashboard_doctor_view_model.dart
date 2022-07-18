@@ -25,7 +25,7 @@ class DashboardDoctorviewModel with ChangeNotifier {
       _scheduleToday.clear();
       _historySchedule.clear();
       String dateNow = DateFormat('yyyy-MM-dd').format(DateTime.now());
-      final s = await ScheduleAPI().getSchedules();
+      final s = await ScheduleAPI().getSchedulesDoctor();
       for (var i = 0; i < s!.length; i++) {
         if (s[i].tanggal == dateNow &&
             s[i].catatan == null &&

@@ -32,7 +32,7 @@ class _FormAddScheduleState extends State<FormAddSchedule> {
   @override
   void initState() {
     super.initState();
-    jenisPerawatan.text = 'Perawatan Biasa';
+    jenisPerawatan.text = 'Pilih Jenis Perawatan';
   }
 
   @override
@@ -258,10 +258,44 @@ class _FormAddScheduleState extends State<FormAddSchedule> {
             height: 15,
           ),
           DropdownButtonFormField(
+            validator: (value) {
+              if (value == 'Pilih Jenis Perawatan') {
+                return 'Silahkan Pilih Jenis Perawatan';
+              }
+              return null;
+            },
             borderRadius: BorderRadius.circular(20),
             value: jenisPerawatan.text,
             decoration: InputDecoration(
               enabledBorder: OutlineInputBorder(
+                borderSide: const BorderSide(
+                  width: 1.5,
+                  color: Colors.black,
+                ),
+                borderRadius: BorderRadius.circular(20),
+              ),
+              errorBorder: OutlineInputBorder(
+                borderSide: const BorderSide(
+                  width: 1.5,
+                  color: Colors.black,
+                ),
+                borderRadius: BorderRadius.circular(20),
+              ),
+              disabledBorder: OutlineInputBorder(
+                borderSide: const BorderSide(
+                  width: 1.5,
+                  color: Colors.black,
+                ),
+                borderRadius: BorderRadius.circular(20),
+              ),
+              border: OutlineInputBorder(
+                borderSide: const BorderSide(
+                  width: 1.5,
+                  color: Colors.black,
+                ),
+                borderRadius: BorderRadius.circular(20),
+              ),
+              focusedErrorBorder: OutlineInputBorder(
                 borderSide: const BorderSide(
                   width: 1.5,
                   color: Colors.black,
@@ -285,8 +319,11 @@ class _FormAddScheduleState extends State<FormAddSchedule> {
                 jenisPerawatan.text = newValue!;
               });
             },
-            items: ['Perawatan Biasa', 'Rawat Jalan']
-                .map<DropdownMenuItem<String>>((String value) {
+            items: [
+              'Pilih Jenis Perawatan',
+              'Perawatan Biasa',
+              'Rawat Jalan',
+            ].map<DropdownMenuItem<String>>((String value) {
               return DropdownMenuItem<String>(
                 value: value,
                 child: Text(
@@ -484,6 +521,7 @@ class _FormAddScheduleState extends State<FormAddSchedule> {
               ),
               Text(
                 widget.namaDokter,
+                overflow: TextOverflow.ellipsis,
                 style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w400,

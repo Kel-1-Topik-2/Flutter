@@ -74,31 +74,6 @@ class _LoginFormState extends State<LoginForm> {
               SizedBox(
                 height: width > 915 ? 72 : 20,
               ),
-              // Row(
-              //   children: [
-              //     ElevatedButton(
-              //       key: const Key('Button Login'),
-              //       onPressed: () {},
-              //       child: const Text(
-              //         'Ada Key',
-              //       ),
-              //     ),
-              //     ElevatedButton(
-              //       onPressed: () {},
-              //       child: const Text(
-              //         'Ga Ada Key',
-              //       ),
-              //     ),
-              //     Semantics(
-              //       child: ElevatedButton(
-              //         onPressed: () {},
-              //         child: const Text(
-              //           'Pake Semantic',
-              //         ),
-              //       ),
-              //     ),
-              //   ],
-              // ),
               SizedBox(
                 width: width > 915 ? 206 : 150,
                 height: width > 915 ? 56 : 40,

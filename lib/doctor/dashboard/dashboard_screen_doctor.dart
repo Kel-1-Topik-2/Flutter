@@ -33,10 +33,10 @@ class _DashboardScreenDoctorState extends State<DashboardScreenDoctor> {
         context,
         listen: false,
       );
-      await viewModel.getSchedules();
       SharedPreferences prefs = await SharedPreferences.getInstance();
       var cek = prefs.getString('doctor');
       doctor = Doctor.fromJson2(jsonDecode(cek!));
+      await viewModel.getSchedules();
     });
   }
 

@@ -112,9 +112,9 @@ class _Form2State extends State<Form2> {
               textEditingController: widget.processViewModel.s.catatan != null
                   ? TextEditingController(
                       text: widget.processViewModel.s.catatan)
-                  : diagnosa,
+                  : catatan,
               readOnly:
-                  widget.processViewModel.s.diagnosa != null ? true : false,
+                  widget.processViewModel.s.catatan != null ? true : false,
               line: 6,
             ),
           ],

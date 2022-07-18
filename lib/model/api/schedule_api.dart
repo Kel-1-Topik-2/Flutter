@@ -13,7 +13,7 @@ class ScheduleAPI {
         'https://springboot-postgresql-capstone.herokuapp.com/jadwal',
       );
       if (response.statusCode == 200) {
-        List<Schedule> schedules = (response.data as List)
+        List<Schedule> schedules = (response.data['data'] as List)
             .map(
               (e) => Schedule.fromJson(e),
             )
@@ -23,6 +23,29 @@ class ScheduleAPI {
         return null;
       }
     } catch (e) {
+      return null;
+    }
+  }
+
+  Future<List<Schedule>?> getSchedulesDoctor() async {
+    try {
+      await token.tokenFunc();
+      dio.options.headers['Authorization'] = 'Bearer: ${token.token}';
+      final response = await dio.get(
+        'https://springboot-postgresql-capstone.herokuapp.com/jadwal/jadwalbydokter',
+      );
+      if (response.statusCode == 200) {
+        List<Schedule> schedules = (response.data['data'] as List)
+            .map(
+              (e) => Schedule.fromJson(e),
+            )
+            .toList();
+        return schedules;
+      } else {
+        return null;
+      }
+    } catch (e) {
+      print(e);
       return null;
     }
   }
